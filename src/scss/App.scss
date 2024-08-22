@@ -25,16 +25,18 @@ body {
     color: $color-tittle;
     font-size: 50px;
     margin-top: 150px;
+    text-shadow: 2px 2px 0 #000, -2px 2px 0;
   }
   &__button {
     background-color: $color-tittle;
     padding: 12px;
     border-radius: 20%;
-
+    border: 1px, solid, black;
     &-link {
       font-family: $tittle;
       color: white;
       font-size: 40px;
+      text-shadow: 2px 2px 0 #000, -2px 2px 0;
     }
   }
 }
