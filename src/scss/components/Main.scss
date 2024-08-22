@@ -1,0 +1,26 @@
+@import "../core/variables.scss";
+
+.main {
+  background-color: white;
+}
+.icon-add {
+  width: 30px;
+  margin: 0 auto;
+}
+.container-box {
+  border: 3px dashed $pastel-pink;
+  max-width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 10px;
+  margin: 20px;
+  cursor: pointer;
+  &__tittle {
+    margin: 0 auto;
+    font-family: $body;
+    color: $color-tittle;
+  }
+}

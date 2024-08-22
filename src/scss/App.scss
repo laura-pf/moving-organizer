@@ -1,42 +1,5 @@
 @import "core/reset";
 @import "core/variables.scss";
-
-body {
-  background-image: url(../images/cajacentral-fondorosa.jpg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
-  background-color: $pastel-pink;
-  @media (min-width: 1024px) {
-    background-size: 50%;
-  }
-}
-
-.landing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  justify-content: space-evenly;
-
-  &__tittle {
-    font-family: $tittle;
-    color: $color-tittle;
-    font-size: 50px;
-    margin-top: 150px;
-    text-shadow: 2px 2px 0 #000, -2px 2px 0;
-  }
-  &__button {
-    background-color: $color-tittle;
-    padding: 12px;
-    border-radius: 20%;
-    border: 1px, solid, black;
-    &-link {
-      font-family: $tittle;
-      color: white;
-      font-size: 40px;
-      text-shadow: 2px 2px 0 #000, -2px 2px 0;
-    }
-  }
-}
+@import "components/Landing.scss";
+@import "components/Filter.scss";
+@import "components/Header.scss";

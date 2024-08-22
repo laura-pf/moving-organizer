@@ -1,0 +1,23 @@
+@import "../core/variables.scss";
+
+.filter {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 3px solid $pastel-pink;
+  margin: 20px;
+}
+.label {
+  color: $color-tittle;
+  font-family: $body;
+  font-size: 16px;
+}
+.input {
+  padding: 5px;
+  border-radius: 5%;
+  border: 2px solid $pastel-pink;
+  color: $color-tittle;
+  font-family: $body;
+  font-size: 16px;
+}

@@ -1,16 +1,16 @@
 import "../scss/App.scss";
+import { Routes, Route } from "react-router-dom";
+import Landing from "./Landing";
+import Main from "./Main";
 
 function App() {
   return (
-    <main className="landing">
-      <h1 className="landing__tittle">Organizador de </h1>
-      <h1 className="landing__tittle">Mudanzas</h1>
-      <div className="landing__button">
-        <a className="landing__button-link" href="">
-          COMENZAR
-        </a>
-      </div>
-    </main>
+    <>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/main" element={<Main />} />
+      </Routes>
+    </>
   );
 }
 
