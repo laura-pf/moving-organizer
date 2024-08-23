@@ -1,0 +1,28 @@
+@import "../core/variables.scss";
+
+.icon {
+  width: 50px;
+  color: $color-tittle;
+}
+
+.list-contact {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.container-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  &__link {
+    background-color: $color-tittle;
+    color: white;
+    padding: 10px;
+    border-radius: 15%;
+    font-size: 30px;
+
+    font-family: $tittle;
+  }
+}

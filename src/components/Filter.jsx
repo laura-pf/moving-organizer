@@ -12,6 +12,9 @@ function Filter() {
         <option className="input" value="">
           Habitación
         </option>
+        <option className="input" value="">
+          Otros
+        </option>
       </select>
       <input className="input" type="text" />
     </form>

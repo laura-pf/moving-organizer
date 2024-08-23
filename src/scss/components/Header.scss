@@ -1,6 +1,26 @@
 @import "../core/variables.scss";
 
 .header {
-  padding: 40px;
+  padding: 20px;
   background-color: $pastel-pink;
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    &-list {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+}
+
+.img-link {
+  width: 60px;
+}
+
+.nav-list-item {
+  font-family: $tittle;
+  font-size: 25px;
+  font-weight: bold;
+  color: $color-tittle;
 }
