@@ -22,6 +22,7 @@ function App() {
   function handleClickClose() {
     setModalAddBox(false);
     setInputModalAddBox(""); //cuando se cierra el pop up, de momento no se guarda la información escrita anteriormente, mas adelante se puede contemplar guardar en localStorage
+    setMesaggeAddBox("");
   }
 
   // input de añadir caja
@@ -38,6 +39,7 @@ function App() {
       setAddedBox([...addedBox, newBox]);
       setInputModalAddBox("");
       setMesaggeAddBox("");
+      setModalAddBox(false);
     }
 
     if (inputModalAddBox === "") {
