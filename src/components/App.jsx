@@ -6,24 +6,48 @@ import Contact from "./Contact";
 import Info from "./Info";
 import Header from "./Header";
 import { useState } from "react";
+import LogoBox from "../images/caja-png.png";
 
 function App() {
-  const [addBox, setAddBox] = useState(false);
+  const [modalAddBox, setModalAddBox] = useState(false);
   const location = useLocation();
-  const [inputAddBox, setInputAddBox] = useState("");
+  const [inputModalAddBox, setInputModalAddBox] = useState("");
+  const [addedBox, setAddedBox] = useState([]);
+  const [messageAddBox, setMesaggeAddBox] = useState("");
   /*abrir pop up añadir caja*/
-  function handleAddBox() {
-    setAddBox(true);
+  function handleModalAddBox() {
+    setModalAddBox(true);
   }
   /*cerrar pop up añadir caja*/
   function handleClickClose() {
-    setAddBox(false);
-    setInputAddBox(""); //cuando se cierra el pop up, de momento no se guarda la información escrita anteriormente, mas adelante se puede contemplar guardar en localStorage
+    setModalAddBox(false);
+    setInputModalAddBox(""); //cuando se cierra el pop up, de momento no se guarda la información escrita anteriormente, mas adelante se puede contemplar guardar en localStorage
   }
 
   // input de añadir caja
-  function handleChangeInputAddBox(value) {
-    setInputAddBox(value);
+  function handleChangeInputModalAddBox(value) {
+    setInputModalAddBox(value);
+  }
+
+  function handleClickAddBox() {
+    if (inputModalAddBox.trim() !== "") {
+      const newBox = {
+        tittle: inputModalAddBox,
+        image: LogoBox,
+      };
+      setAddedBox([...addedBox, newBox]);
+      setInputModalAddBox("");
+      setMesaggeAddBox("");
+    }
+
+    if (inputModalAddBox === "") {
+      setMesaggeAddBox("Debes ponerle un nombre a la caja");
+    }
+  }
+
+  function handleClickRemoveBox(indexToRemove) {
+    const removedBox = addedBox.filter((_, index) => index !== indexToRemove);
+    setAddedBox(removedBox);
   }
 
   return (
@@ -35,11 +59,15 @@ function App() {
           path="/main"
           element={
             <Main
-              addBox={addBox}
-              onClickAddBox={handleAddBox}
+              modalAddBox={modalAddBox}
+              onClickModalAddBox={handleModalAddBox}
               onClickClose={handleClickClose}
-              inputAddBox={inputAddBox}
-              onChangeInputAddBox={handleChangeInputAddBox}
+              inputModalAddBox={inputModalAddBox}
+              onChangeInputModalAddBox={handleChangeInputModalAddBox}
+              onClickAddBox={handleClickAddBox}
+              addedBox={addedBox}
+              messageAddBox={messageAddBox}
+              onClickRemoveBox={handleClickRemoveBox}
             />
           }
         />

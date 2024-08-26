@@ -1,14 +1,19 @@
-import "../scss/components/AddBox.scss";
+import "../scss/components/ModalAddBox.scss";
 
-function AddBox(props) {
+function ModalAddBox(props) {
   function handleClose(event) {
     event.preventDefault();
     props.onClickClose();
   }
 
   function handleInput(event) {
-    const valueInputAddBox = event.target.value;
-    props.onChangeInputAddBox(valueInputAddBox);
+    const valueInputModalAddBox = event.target.value;
+    props.onChangeInputModalAddBox(valueInputModalAddBox);
+  }
+
+  function handleAddBox(event) {
+    event.preventDefault();
+    props.onClickAddBox();
   }
   return (
     <section className="popup-add-box">
@@ -24,12 +29,15 @@ function AddBox(props) {
               type="text"
               onChange={handleInput}
             />
-            <button className="button-add-box">Añadir</button>
+            <button className="button-add-box" onClick={handleAddBox}>
+              Añadir
+            </button>
           </div>
         </form>
+        <h3 className="label message">{props.messageAddBox}</h3>
       </div>
     </section>
   );
 }
 
-export default AddBox;
+export default ModalAddBox;

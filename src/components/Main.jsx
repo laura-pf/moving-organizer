@@ -1,34 +1,58 @@
 import "../scss/components/Main.scss";
 import IconAdd from "../images/icon+.png";
 import Filter from "./Filter";
-import AddBox from "./AddBox";
+import ModalAddBox from "./ModalAddBox";
+import LogoBox from "../images/caja-png.png";
 
 function Main(props) {
   /*Cuando la usuaria haga click en añadir caja, muestra el pop up con el formulario para añadir*/
   function handleClick(event) {
     event.preventDefault();
-    props.onClickAddBox();
+    props.onClickModalAddBox();
+  }
+
+  function handleClickRemove(index) {
+    props.onClickRemoveBox(index);
   }
 
   return (
     <main>
       <section className="section">
         <Filter />
-        <div className="container-box" onClick={handleClick}>
-          <h3 className="container-box__tittle">Añadir caja</h3>
-          <img
-            className="icon-add"
-            src={IconAdd}
-            alt="imagen icono para añadir"
-          />
-        </div>
+
+        <ul className="container-list-box">
+          {props.addedBox.map((box, index) => (
+            <li key={index} className="container-box box">
+              <span className="remove" onClick={() => handleClickRemove(index)}>
+                X
+              </span>
+              <h3 className="container-box__tittle">{box.tittle}</h3>
+              <img
+                className="box-image"
+                src={box.image}
+                alt="imagen de caja de cartón"
+              />{" "}
+            </li>
+          ))}
+
+          <li className="container-box" onClick={handleClick}>
+            <h3 className="container-box__tittle">Añadir caja</h3>
+            <img
+              className="icon-add"
+              src={IconAdd}
+              alt="imagen icono para añadir"
+            />
+          </li>
+        </ul>
       </section>
 
-      {props.addBox && (
-        <AddBox
+      {props.modalAddBox && (
+        <ModalAddBox
           onClickClose={props.onClickClose}
-          inputAddBox={props.inputAddBox}
-          onChangeInputAddBox={props.onChangeInputAddBox}
+          inputModalAddBox={props.inputModalAddBox}
+          onChangeInputModalAddBox={props.onChangeInputModalAddBox}
+          onClickAddBox={props.onClickAddBox}
+          messageAddBox={props.messageAddBox}
         />
       )}
     </main>
