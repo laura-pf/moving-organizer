@@ -15,6 +15,9 @@ function App() {
   const [inputModalAddBox, setInputModalAddBox] = useState("");
   const [addedBox, setAddedBox] = useState([]);
   const [messageAddBox, setMesaggeAddBox] = useState("");
+  const [inputAddObject, setInputAddObject] = useState("");
+  const [objects, setObjects] = useState([]);
+  const [messageAddObject, setMessageAddObject] = useState("");
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
     setModalAddBox(true);
@@ -34,7 +37,7 @@ function App() {
   function handleClickAddBox() {
     if (inputModalAddBox.trim() !== "") {
       const newBox = {
-        id: addedBox.length,
+        id: Date.now(),
         tittle: inputModalAddBox,
         image: LogoBox,
       };
@@ -56,9 +59,41 @@ function App() {
 
   const { pathname } = useLocation();
   const routeData = matchPath("/box/:boxId", pathname);
-  const boxId = routeData !== null ? parseInt(addedBox.length) : null;
+  const boxId = routeData !== null ? parseInt(routeData.params.boxId) : null;
 
   const boxSelected = addedBox.find((box) => box.id === boxId);
+
+  function handleInputAddObject(value) {
+    setInputAddObject(value);
+  }
+
+  function handleAddObject() {
+    if (inputAddObject === "") {
+      setMessageAddObject("Por favor, añade un objeto");
+    } else {
+      const newObject = inputAddObject;
+      setObjects([...objects, newObject]);
+      setMessageAddObject("");
+      setInputAddObject("");
+    }
+
+    //  if (inputModalAddBox.trim() !== "") {
+    //     const newBox = {
+    //       id: Date.now(),
+    //       tittle: inputModalAddBox,
+    //       image: LogoBox,
+    //     };
+    //     setAddedBox([...addedBox, newBox]);
+    //     setInputModalAddBox("");
+    //     setMesaggeAddBox("");
+    //     setModalAddBox(false);
+    //   }
+
+    //   if (inputModalAddBox === "") {
+    //     setMesaggeAddBox("Debes ponerle un nombre a la caja");
+    //   }
+    // }
+  }
 
   return (
     <>
@@ -85,7 +120,17 @@ function App() {
         <Route path="/info" element={<Info />} />
         <Route
           path="/box/:boxId"
-          element={<Box addedBox={addedBox} box={boxSelected} />}
+          element={
+            <Box
+              addedBox={addedBox}
+              box={boxSelected}
+              onClickAddObject={handleAddObject}
+              onChangeInputObject={handleInputAddObject}
+              messageAddObject={messageAddObject}
+              objects={objects}
+              inputObject={inputAddObject}
+            />
+          }
         />
       </Routes>
     </>
