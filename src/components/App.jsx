@@ -76,7 +76,6 @@ function App() {
   }
 
   function handleAddObject() {
-    // Limpiar mensaje de error antes de comenzar
     setMessageAddObject("");
 
     // Verificar si el input está vacío
@@ -94,43 +93,18 @@ function App() {
           "El elemento que intentas añadir ya existe en tu lista"
         );
       } else {
-        // Añadir nuevo objeto a la lista
         const newObject = {
           text: inputAddObject.trim(),
           checked: false,
         };
 
         setObjects([...objects, newObject]);
-        setMessageAddObject(""); // Limpia el mensaje si el objeto se añade correctamente
+        setMessageAddObject("");
       }
     }
 
-    // Limpiar el campo de entrada después de cada intento de añadir
     setInputAddObject("");
   }
-
-  // function handleAddObject() {
-  //   setMessageAddObject("");
-  //   const doesObjectExist = objects.some(
-  //     (object) =>
-  //       object.text.toLowerCase() === inputAddObject.trim().toLowerCase()
-  //   );
-  //   if (inputAddObject.trim() === "") {
-  //     setMessageAddObject("Por favor, añade un objeto");
-  //   } else if (doesObjectExist) {
-  //     setMessageAddObject(
-  //       "El elemento que intentas añadir ya existe en tu lista"
-  //     );
-  //     return;
-  //   } else {
-  //     const newObject = {
-  //       text: inputAddObject.trim(),
-  //       checked: false,
-  //     };
-  //     setObjects([...objects, newObject]);
-  //     setInputAddObject("");
-  //   }
-  // }
 
   //Marcar con check cada elemento de la lista
   function handleChecked(indexToCheck) {

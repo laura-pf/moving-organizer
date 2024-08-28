@@ -10,7 +10,7 @@ function BoxList(props) {
         <span className="remove" onClick={() => handleClickRemove(props.index)}>
           X
         </span>
-        <Link to={`/box/${props.box.id}`}>
+        <Link className="container-box__link" to={`/box/${props.box.id}`}>
           <h3 className="container-box__tittle">{props.box.tittle}</h3>
           <img
             className="box-image"

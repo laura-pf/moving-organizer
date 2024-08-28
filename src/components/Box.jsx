@@ -18,28 +18,44 @@ function Box(props) {
 
   return (
     <div className="containbox">
+      <Link className="containbox__back" to="/main">
+        {" "}
+        &lt; Volver
+      </Link>
       <h1 className="containbox__tittle">{props.box.tittle}</h1>
-      <form>
-        <label>Guardar en la caja:</label>
-        <input
-          value={props.inputObject}
-          type="text"
-          name=""
-          id=""
-          onChange={handleObjectInput}
-        />
-        <button type="submit" onClick={handleAddObject}>
-          Añadir
-        </button>
+      <form className="formAddObject">
+        <label className="formAddObject__tittle">Guardar en la caja:</label>
+        <div className="formAddObject__inputButton">
+          <input
+            className="formAddObject__inputButton-inputObject"
+            value={props.inputObject}
+            type="text"
+            name=""
+            id=""
+            onChange={handleObjectInput}
+          />
+          <button
+            className="formAddObject__inputButton-button"
+            type="submit"
+            onClick={handleAddObject}
+          >
+            Añadir
+          </button>
+        </div>
       </form>
-      <ul>
+      {props.messageAddObject && (
+        <h3 className="label message">{props.messageAddObject}</h3>
+      )}
+      <ul className="object-list">
         {props.objects.map((object, index) => (
-          <li key={index}>
+          <li className="object-list__item" key={index}>
             <input
+              className="check"
               checked={object.checked}
               onChange={() => handleCheckboxChange(index)}
               type="checkbox"
             />
+
             <span
               style={{
                 textDecoration: object.checked ? "line-through" : "none",
@@ -50,11 +66,7 @@ function Box(props) {
           </li>
         ))}
       </ul>
-      <button>Guardar Caja</button>
-      {props.messageAddObject && (
-        <h3 className="label message">{props.messageAddObject}</h3>
-      )}
-      <Link to="/main">Volver</Link>
+      <button className="button-save-box">Guardar Caja</button>
     </div>
   );
 }
