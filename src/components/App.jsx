@@ -76,23 +76,6 @@ function App() {
       setMessageAddObject("");
       setInputAddObject("");
     }
-
-    //  if (inputModalAddBox.trim() !== "") {
-    //     const newBox = {
-    //       id: Date.now(),
-    //       tittle: inputModalAddBox,
-    //       image: LogoBox,
-    //     };
-    //     setAddedBox([...addedBox, newBox]);
-    //     setInputModalAddBox("");
-    //     setMesaggeAddBox("");
-    //     setModalAddBox(false);
-    //   }
-
-    //   if (inputModalAddBox === "") {
-    //     setMesaggeAddBox("Debes ponerle un nombre a la caja");
-    //   }
-    // }
   }
 
   return (
