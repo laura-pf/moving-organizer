@@ -1,0 +1,9 @@
+@import "../core/variables.scss";
+
+.containbox {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  &__tittle {
+  }
+}
