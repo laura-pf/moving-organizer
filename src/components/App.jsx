@@ -7,6 +7,7 @@ import Info from "./Info";
 import Header from "./Header";
 import { useState } from "react";
 import LogoBox from "../images/caja-png.png";
+import Box from "./Box";
 
 function App() {
   const [modalAddBox, setModalAddBox] = useState(false);
@@ -33,6 +34,7 @@ function App() {
   function handleClickAddBox() {
     if (inputModalAddBox.trim() !== "") {
       const newBox = {
+        id: addedBox.length,
         tittle: inputModalAddBox,
         image: LogoBox,
       };
@@ -75,6 +77,7 @@ function App() {
         />
         <Route path="/contact" element={<Contact />} />
         <Route path="/info" element={<Info />} />
+        <Route path="/box/:boxId" element={<Box addedBox={addedBox} />} />
       </Routes>
     </>
   );

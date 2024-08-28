@@ -3,6 +3,7 @@ import IconAdd from "../images/icon+.png";
 import Filter from "./Filter";
 import ModalAddBox from "./ModalAddBox";
 import LogoBox from "../images/caja-png.png";
+import { Link } from "react-router-dom";
 
 function Main(props) {
   /*Cuando la usuaria haga click en añadir caja, muestra el pop up con el formulario para añadir*/
@@ -23,15 +24,20 @@ function Main(props) {
         <ul className="container-list-box">
           {props.addedBox.map((box, index) => (
             <li key={index} className="container-box box">
-              <span className="remove" onClick={() => handleClickRemove(index)}>
-                X
-              </span>
-              <h3 className="container-box__tittle">{box.tittle}</h3>
-              <img
-                className="box-image"
-                src={box.image}
-                alt="imagen de caja de cartón"
-              />{" "}
+              <Link to={`/box/${box.id}`}>
+                <span
+                  className="remove"
+                  onClick={() => handleClickRemove(index)}
+                >
+                  X
+                </span>
+                <h3 className="container-box__tittle">{box.tittle}</h3>
+                <img
+                  className="box-image"
+                  src={box.image}
+                  alt="imagen de caja de cartón"
+                />{" "}
+              </Link>
             </li>
           ))}
 
