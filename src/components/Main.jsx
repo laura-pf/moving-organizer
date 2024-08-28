@@ -4,6 +4,7 @@ import Filter from "./Filter";
 import ModalAddBox from "./ModalAddBox";
 import LogoBox from "../images/caja-png.png";
 import { Link } from "react-router-dom";
+import BoxList from "./BoxList";
 
 function Main(props) {
   /*Cuando la usuaria haga click en añadir caja, muestra el pop up con el formulario para añadir*/

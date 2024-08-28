@@ -7,7 +7,6 @@ import Info from "./Info";
 import Header from "./Header";
 import { useState } from "react";
 import LogoBox from "../images/caja-png.png";
-import Box from "./Box";
 
 function App() {
   const [modalAddBox, setModalAddBox] = useState(false);
