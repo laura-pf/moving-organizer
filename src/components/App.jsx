@@ -1,5 +1,5 @@
 import "../scss/App.scss";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, matchPath } from "react-router-dom";
 import Landing from "./Landing";
 import Main from "./Main";
 import Contact from "./Contact";
@@ -54,6 +54,12 @@ function App() {
     setAddedBox(removedBox);
   }
 
+  const { pathname } = useLocation();
+  const routeData = matchPath("/box/:boxId", pathname);
+  const boxId = routeData !== null ? parseInt(addedBox.length) : null;
+
+  const boxSelected = addedBox.find((box) => box.id === boxId);
+
   return (
     <>
       {location.pathname !== "/" && <Header />}
@@ -77,7 +83,10 @@ function App() {
         />
         <Route path="/contact" element={<Contact />} />
         <Route path="/info" element={<Info />} />
-        <Route path="/box/:boxId" element={<Box addedBox={addedBox} />} />
+        <Route
+          path="/box/:boxId"
+          element={<Box addedBox={addedBox} box={boxSelected} />}
+        />
       </Routes>
     </>
   );

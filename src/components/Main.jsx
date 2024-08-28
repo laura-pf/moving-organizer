@@ -2,18 +2,15 @@ import "../scss/components/Main.scss";
 import IconAdd from "../images/icon+.png";
 import Filter from "./Filter";
 import ModalAddBox from "./ModalAddBox";
-import LogoBox from "../images/caja-png.png";
+
 import { Link } from "react-router-dom";
+import BoxList from "./BoxList";
 
 function Main(props) {
   /*Cuando la usuaria haga click en añadir caja, muestra el pop up con el formulario para añadir*/
   function handleClick(event) {
     event.preventDefault();
     props.onClickModalAddBox();
-  }
-
-  function handleClickRemove(index) {
-    props.onClickRemoveBox(index);
   }
 
   return (
@@ -23,6 +20,15 @@ function Main(props) {
 
         <ul className="container-list-box">
           {props.addedBox.map((box, index) => (
+            <BoxList
+              addedBox={props.addedBox}
+              key={index}
+              box={box}
+              onClickRemoveBox={props.onClickRemoveBox}
+              index={index}
+            />
+          ))}
+          {/* {props.addedBox.map((box, index) => (
             <li key={index} className="container-box box">
               <Link to={`/box/${box.id}`}>
                 <span
@@ -39,7 +45,7 @@ function Main(props) {
                 />{" "}
               </Link>
             </li>
-          ))}
+          ))} */}
 
           <li className="container-box" onClick={handleClick}>
             <h3 className="container-box__tittle">Añadir caja</h3>
