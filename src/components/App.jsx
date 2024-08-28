@@ -34,6 +34,8 @@ function App() {
     setInputModalAddBox(value);
   }
 
+  //función añadir caja
+
   function handleClickAddBox() {
     if (inputModalAddBox.trim() !== "") {
       const newBox = {
@@ -52,16 +54,22 @@ function App() {
     }
   }
 
+  //función eliminar caja
+
   function handleClickRemoveBox(indexToRemove) {
     const removedBox = addedBox.filter((_, index) => index !== indexToRemove);
     setAddedBox(removedBox);
   }
+
+  //rutas de cada caja
 
   const { pathname } = useLocation();
   const routeData = matchPath("/box/:boxId", pathname);
   const boxId = routeData !== null ? parseInt(routeData.params.boxId) : null;
 
   const boxSelected = addedBox.find((box) => box.id === boxId);
+
+  //Añadir objetos (dentro de las rutas, es decir, dentro de cada caja)
 
   function handleInputAddObject(value) {
     setInputAddObject(value);
