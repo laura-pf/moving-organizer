@@ -28,24 +28,6 @@ function Main(props) {
               index={index}
             />
           ))}
-          {/* {props.addedBox.map((box, index) => (
-            <li key={index} className="container-box box">
-              <Link to={`/box/${box.id}`}>
-                <span
-                  className="remove"
-                  onClick={() => handleClickRemove(index)}
-                >
-                  X
-                </span>
-                <h3 className="container-box__tittle">{box.tittle}</h3>
-                <img
-                  className="box-image"
-                  src={box.image}
-                  alt="imagen de caja de cartón"
-                />{" "}
-              </Link>
-            </li>
-          ))} */}
 
           <li className="container-box" onClick={handleClick}>
             <h3 className="container-box__tittle">Añadir caja</h3>

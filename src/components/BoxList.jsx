@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../scss/components/BoxList.scss";
 
 function BoxList(props) {
   function handleClickRemove(index) {

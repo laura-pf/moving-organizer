@@ -4,7 +4,7 @@ import "../scss/components/Box.scss";
 function Box(props) {
   function handleAddObject(event) {
     event.preventDefault();
-    props.onClickAddObject(props.box.id);
+    props.onClickAddObject();
   }
 
   function handleObjectInput(event) {

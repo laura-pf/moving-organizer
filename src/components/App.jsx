@@ -37,10 +37,19 @@ function App() {
   //función añadir caja
 
   function handleClickAddBox() {
-    if (inputModalAddBox.trim() !== "") {
+    const doesBoxExist = addedBox.some(
+      (box) => box.tittle.toLowerCase() === inputModalAddBox.toLocaleLowerCase()
+    );
+
+    if (inputModalAddBox === "") {
+      setMesaggeAddBox("Debes ponerle un nombre a la caja");
+      return;
+    } else if (doesBoxExist) {
+      setMesaggeAddBox("Ya hay otra caja con ese nombre");
+      return;
+    } else {
       const newBox = {
         id: Date.now(),
-        //modificar por math.random
         tittle: inputModalAddBox,
         image: LogoBox,
         objects: [],
@@ -49,10 +58,6 @@ function App() {
       setInputModalAddBox("");
       setMesaggeAddBox("");
       setModalAddBox(false);
-    }
-
-    if (inputModalAddBox === "") {
-      setMesaggeAddBox("Debes ponerle un nombre a la caja");
     }
   }
 
@@ -77,7 +82,7 @@ function App() {
     setInputAddObject(value);
   }
 
-  function handleAddObject(id) {
+  function handleAddObject() {
     setMessageAddObject("");
 
     if (inputAddObject.trim() === "") {
@@ -87,7 +92,7 @@ function App() {
 
     //encontramos la caja con find
 
-    // const idBox = addedBox.find((box) => box.id === id); esto lo hemos hecho antes para la ruta, con la constante boxSelected. se usa esa
+    // const idBox = addedBox.find((box) => box.id === id); // esto lo hemos hecho antes para la ruta, con la constante boxSelected. se usa esa
 
     //verificamos si el objeto ya existe en la lista:
     const doesObjectExist = boxSelected.objects.some(
@@ -97,6 +102,7 @@ function App() {
 
     if (doesObjectExist) {
       setMessageAddObject("El elemento que intentas añadir ya está en tu caja");
+      setInputAddObject("");
       return; //no modificar la caja si el objeto ya esta en la lista
     } else {
       // Si no existe, proceder a añadir el nuevo objeto
@@ -107,7 +113,7 @@ function App() {
 
       // Crear un nuevo array de cajas actualizadas
       const updatedBoxes = addedBox.map((box) => {
-        if (box.id === id) {
+        if (box.id === boxSelected.id) {
           return {
             ...box,
             objects: [...box.objects, newObject], // Añadir el nuevo objeto
