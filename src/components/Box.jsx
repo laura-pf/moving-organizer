@@ -4,7 +4,7 @@ import "../scss/components/Box.scss";
 function Box(props) {
   function handleAddObject(event) {
     event.preventDefault();
-    props.onClickAddObject();
+    props.onClickAddObject(props.box.id);
   }
 
   function handleObjectInput(event) {
@@ -12,8 +12,8 @@ function Box(props) {
     props.onChangeInputObject(valueObject);
   }
 
-  function handleCheckboxChange(index) {
-    props.onChangeChecked(index);
+  function handleCheckboxChange(index, id) {
+    props.onChangeChecked(index, id);
   }
 
   return (
@@ -24,14 +24,16 @@ function Box(props) {
       </Link>
       <h1 className="containbox__tittle">{props.box.tittle}</h1>
       <form className="formAddObject">
-        <label className="formAddObject__tittle">Guardar en la caja:</label>
+        <label htmlFor="item" className="formAddObject__tittle">
+          Guardar en la caja:
+        </label>
         <div className="formAddObject__inputButton">
           <input
             className="formAddObject__inputButton-inputObject"
             value={props.inputObject}
             type="text"
-            name=""
-            id=""
+            name="item"
+            id="item"
             onChange={handleObjectInput}
           />
           <button
@@ -46,26 +48,29 @@ function Box(props) {
       {props.messageAddObject && (
         <h3 className="label message">{props.messageAddObject}</h3>
       )}
-      <ul className="object-list">
-        {props.objects.map((object, index) => (
-          <li className="object-list__item" key={index}>
-            <input
-              className="check"
-              checked={object.checked}
-              onChange={() => handleCheckboxChange(index)}
-              type="checkbox"
-            />
+      {props.box.objects.length > 0 && (
+        <ul className="object-list">
+          {props.box.objects.map((object, index) => (
+            <li className="object-list__item" key={index}>
+              <input
+                className="check"
+                checked={object.checked}
+                onChange={() => handleCheckboxChange(props.box.id, index)}
+                type="checkbox"
+              />
 
-            <span
-              style={{
-                textDecoration: object.checked ? "line-through" : "none",
-              }}
-            >
-              {object.text}
-            </span>
-          </li>
-        ))}
-      </ul>
+              <span
+                style={{
+                  textDecoration: object.checked ? "line-through" : "none",
+                }}
+              >
+                {object.text}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+
       <button className="button-save-box">Guardar Caja</button>
     </div>
   );

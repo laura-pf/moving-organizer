@@ -16,7 +16,7 @@ function App() {
   const [addedBox, setAddedBox] = useState([]);
   const [messageAddBox, setMesaggeAddBox] = useState("");
   const [inputAddObject, setInputAddObject] = useState("");
-  const [objects, setObjects] = useState([]);
+  // const [objects, setObjects] = useState([]);
   const [messageAddObject, setMessageAddObject] = useState("");
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
@@ -40,8 +40,10 @@ function App() {
     if (inputModalAddBox.trim() !== "") {
       const newBox = {
         id: Date.now(),
+        //modificar por math.random
         tittle: inputModalAddBox,
         image: LogoBox,
+        objects: [],
       };
       setAddedBox([...addedBox, newBox]);
       setInputModalAddBox("");
@@ -75,44 +77,76 @@ function App() {
     setInputAddObject(value);
   }
 
-  function handleAddObject() {
+  function handleAddObject(id) {
     setMessageAddObject("");
 
-    // Verificar si el input está vacío
     if (inputAddObject.trim() === "") {
       setMessageAddObject("Por favor, añade un objeto");
-    } else {
-      // Verificar si el objeto ya existe en la lista
-      const doesObjectExist = objects.some(
-        (object) =>
-          object.text.toLowerCase() === inputAddObject.trim().toLowerCase()
-      );
-
-      if (doesObjectExist) {
-        setMessageAddObject(
-          "El elemento que intentas añadir ya existe en tu lista"
-        );
-      } else {
-        const newObject = {
-          text: inputAddObject.trim(),
-          checked: false,
-        };
-
-        setObjects([...objects, newObject]);
-        setMessageAddObject("");
-      }
+      return; // Salir si el input está vacío
     }
 
-    setInputAddObject("");
+    //encontramos la caja con find
+
+    // const idBox = addedBox.find((box) => box.id === id); esto lo hemos hecho antes para la ruta, con la constante boxSelected. se usa esa
+
+    //verificamos si el objeto ya existe en la lista:
+    const doesObjectExist = boxSelected.objects.some(
+      (object) =>
+        object.text.toLowerCase() === inputAddObject.trim().toLowerCase()
+    );
+
+    if (doesObjectExist) {
+      setMessageAddObject("El elemento que intentas añadir ya está en tu caja");
+      return; //no modificar la caja si el objeto ya esta en la lista
+    } else {
+      // Si no existe, proceder a añadir el nuevo objeto
+      const newObject = {
+        text: inputAddObject.trim(),
+        checked: false,
+      };
+
+      // Crear un nuevo array de cajas actualizadas
+      const updatedBoxes = addedBox.map((box) => {
+        if (box.id === id) {
+          return {
+            ...box,
+            objects: [...box.objects, newObject], // Añadir el nuevo objeto
+          };
+        }
+        return box; // No hacer cambios en las otras cajas
+      });
+
+      // Actualizar el estado con las cajas actualizadas
+      setAddedBox(updatedBoxes);
+      setMessageAddObject(""); // Limpiar cualquier mensaje de error
+      setInputAddObject(""); // Limpiar el input después de añadir el objeto
+    }
   }
 
   //Marcar con check cada elemento de la lista
-  function handleChecked(indexToCheck) {
-    const updatedObjects = objects.map((object, index) =>
-      index === indexToCheck ? { ...object, checked: !object.checked } : object
-    );
-    setObjects(updatedObjects);
+  function handleChecked(indexToCheck, boxId) {
+    const checkInBox = addedBox.map((box) => {
+      if (box.id === boxId) {
+        const checkedObjects = box.objects.map((object, index) =>
+          index === indexToCheck
+            ? { ...object, checked: !object.checked }
+            : object
+        );
+        return {
+          ...box,
+          objects: checkedObjects,
+        };
+      }
+      return box;
+    });
+    setAddedBox(checkInBox);
   }
+  //   const checkedObjects = addedBox.objects.map((object, index) =>
+  //     index === indexToCheck ? { ...object, checked: !object.checked } : object
+  //   );
+
+  //   setAddedBox(...addedBox.checked: checkedObjects);
+  // }
 
   return (
     <>
@@ -146,7 +180,7 @@ function App() {
               onClickAddObject={handleAddObject}
               onChangeInputObject={handleInputAddObject}
               messageAddObject={messageAddObject}
-              objects={objects}
+              objects={addedBox.objects}
               inputObject={inputAddObject}
               onChangeChecked={handleChecked}
             />
