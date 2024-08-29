@@ -141,12 +141,6 @@ function App() {
     });
     setAddedBox(checkInBox);
   }
-  //   const checkedObjects = addedBox.objects.map((object, index) =>
-  //     index === indexToCheck ? { ...object, checked: !object.checked } : object
-  //   );
-
-  //   setAddedBox(...addedBox.checked: checkedObjects);
-  // }
 
   return (
     <>

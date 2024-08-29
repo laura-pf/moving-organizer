@@ -12,8 +12,8 @@ function Box(props) {
     props.onChangeInputObject(valueObject);
   }
 
-  function handleCheckboxChange(index, id) {
-    props.onChangeChecked(index, id);
+  function handleCheckboxChange(index) {
+    props.onChangeChecked(index, props.box.id);
   }
 
   return (
@@ -48,28 +48,27 @@ function Box(props) {
       {props.messageAddObject && (
         <h3 className="label message">{props.messageAddObject}</h3>
       )}
-      {props.box.objects.length > 0 && (
-        <ul className="object-list">
-          {props.box.objects.map((object, index) => (
-            <li className="object-list__item" key={index}>
-              <input
-                className="check"
-                checked={object.checked}
-                onChange={() => handleCheckboxChange(props.box.id, index)}
-                type="checkbox"
-              />
 
-              <span
-                style={{
-                  textDecoration: object.checked ? "line-through" : "none",
-                }}
-              >
-                {object.text}
-              </span>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className="object-list">
+        {props.box.objects.map((object, index) => (
+          <li className="object-list__item" key={index}>
+            <input
+              className="check"
+              checked={object.checked}
+              onChange={() => handleCheckboxChange(index)}
+              type="checkbox"
+            />
+
+            <span
+              style={{
+                textDecoration: object.checked ? "line-through" : "none",
+              }}
+            >
+              {object.text}
+            </span>
+          </li>
+        ))}
+      </ul>
 
       <button className="button-save-box">Guardar Caja</button>
     </div>
