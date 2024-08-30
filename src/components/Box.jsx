@@ -16,6 +16,10 @@ function Box(props) {
     props.onChangeChecked(index, props.box.id);
   }
 
+  function handleClickRemoveItem(index) {
+    props.onClickRemoveItem(index, props.box.id);
+  }
+
   return (
     <div className="containbox">
       <Link className="containbox__back" to="/main">
@@ -52,19 +56,27 @@ function Box(props) {
       <ul className="object-list">
         {props.box.objects.map((object, index) => (
           <li className="object-list__item" key={index}>
-            <input
-              className="check"
-              checked={object.checked}
-              onChange={() => handleCheckboxChange(index)}
-              type="checkbox"
-            />
+            <div className="object-list__check-item">
+              <input
+                className="check"
+                checked={object.checked}
+                onChange={() => handleCheckboxChange(index)}
+                type="checkbox"
+              />
 
+              <span
+                style={{
+                  textDecoration: object.checked ? "line-through" : "none",
+                }}
+              >
+                {object.text}
+              </span>
+            </div>
             <span
-              style={{
-                textDecoration: object.checked ? "line-through" : "none",
-              }}
+              onClick={() => handleClickRemoveItem(index)}
+              className="close item-close"
             >
-              {object.text}
+              x
             </span>
           </li>
         ))}

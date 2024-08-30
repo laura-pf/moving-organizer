@@ -58,6 +58,9 @@
   flex-direction: column;
   gap: 5px;
   &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: $body;
     color: $color-tittle;
     font-weight: 600;
@@ -76,4 +79,9 @@
   font-family: $body;
   font-size: 17px;
   cursor: pointer;
+}
+
+.item-close {
+  margin: 0;
+  padding: 1px 2px;
 }

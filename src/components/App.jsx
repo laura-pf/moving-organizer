@@ -16,7 +16,6 @@ function App() {
   const [addedBox, setAddedBox] = useState([]);
   const [messageAddBox, setMesaggeAddBox] = useState("");
   const [inputAddObject, setInputAddObject] = useState("");
-  // const [objects, setObjects] = useState([]);
   const [messageAddObject, setMessageAddObject] = useState("");
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
@@ -148,6 +147,20 @@ function App() {
     setAddedBox(checkInBox);
   }
 
+  //eliminar item de cada caja
+  function handleRemoveItem(indexToRemove, boxId) {
+    const removedItem = addedBox.map((box) => {
+      if (box.id === boxId) {
+        return {
+          ...box,
+          objects: box.objects.filter((_, index) => index !== indexToRemove),
+        };
+      }
+      return box;
+    });
+    setAddedBox(removedItem);
+  }
+
   return (
     <>
       {location.pathname !== "/" && <Header />}
@@ -183,6 +196,7 @@ function App() {
               objects={addedBox.objects}
               inputObject={inputAddObject}
               onChangeChecked={handleChecked}
+              onClickRemoveItem={handleRemoveItem}
             />
           }
         />
