@@ -215,6 +215,7 @@ function App() {
               inputObject={inputAddObject}
               onChangeChecked={handleChecked}
               onClickRemoveItem={handleRemoveItem}
+              onClickBack={handleClickBack}
             />
           }
         />

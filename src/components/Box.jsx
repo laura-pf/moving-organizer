@@ -19,11 +19,15 @@ function Box(props) {
   function handleClickRemoveItem(index) {
     props.onClickRemoveItem(index, props.box.id);
   }
+  function handleClickBack(event) {
+    event.preventDefault();
+    props.onClickBack();
+  }
 
   return (
     <div className="containbox">
       <Link className="containbox__back" to="/main">
-        <span> &lt; Volver</span>
+        <span onClick={handleClickBack}> &lt; Volver</span>
       </Link>
       <h1 className="containbox__tittle">{props.box.tittle}</h1>
       <form className="formAddObject">
