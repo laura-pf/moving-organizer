@@ -49,8 +49,9 @@ function Box(props) {
           </button>
         </div>
       </form>
-      {props.messageAddObject && (
-        <h3 className="label message">{props.messageAddObject}</h3>
+
+      {props.box.message && (
+        <h3 className="label message">{props.box.message}</h3>
       )}
 
       <ul className="object-list">

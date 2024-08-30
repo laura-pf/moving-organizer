@@ -16,7 +16,7 @@ function App() {
   const [addedBox, setAddedBox] = useState([]);
   const [messageAddBox, setMesaggeAddBox] = useState("");
   const [inputAddObject, setInputAddObject] = useState("");
-  const [messageAddObject, setMessageAddObject] = useState("");
+  // const [messageAddObject, setMessageAddObject] = useState("");
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
     setModalAddBox(true);
@@ -52,6 +52,7 @@ function App() {
         tittle: inputModalAddBox,
         image: LogoBox,
         objects: [],
+        message: "",
       };
       setAddedBox([...addedBox, newBox]);
       setInputModalAddBox("");
@@ -82,27 +83,47 @@ function App() {
   }
 
   function handleAddObject() {
-    setMessageAddObject("");
+    // Limpiar el input antes de empezar
+    setInputAddObject("");
 
     if (inputAddObject.trim() === "") {
-      setMessageAddObject("Por favor, añade un objeto");
+      // Si el input está vacío, encontrar la caja y actualizar su mensaje de error
+      const updatedBoxes = addedBox.map((box) => {
+        if (box.id === boxSelected.id) {
+          return {
+            ...box,
+            message: "Por favor, añade un objeto", // Mensaje de error específico para la caja
+          };
+        }
+        return box; // No cambiar otras cajas
+      });
+
+      // Actualizar el estado con las cajas modificadas
+      setAddedBox(updatedBoxes);
       return; // Salir si el input está vacío
     }
 
-    //encontramos la caja con find
-
-    // const idBox = addedBox.find((box) => box.id === id); // esto lo hemos hecho antes para la ruta, con la constante boxSelected. se usa esa
-
-    //verificamos si el objeto ya existe en la lista:
+    // Verificamos si el objeto ya existe en la lista de la caja seleccionada
     const doesObjectExist = boxSelected.objects.some(
       (object) =>
         object.text.toLowerCase() === inputAddObject.trim().toLowerCase()
     );
 
     if (doesObjectExist) {
-      setMessageAddObject("El elemento que intentas añadir ya está en tu caja");
-      setInputAddObject("");
-      return; //no modificar la caja si el objeto ya esta en la lista
+      // Si el objeto ya existe, actualizar el mensaje de error solo para la caja seleccionada
+      const updatedBoxes = addedBox.map((box) => {
+        if (box.id === boxSelected.id) {
+          return {
+            ...box,
+            message: "El elemento que intentas añadir ya está en tu caja",
+          };
+        }
+        return box;
+      });
+
+      // Actualizar el estado con las cajas modificadas
+      setAddedBox(updatedBoxes);
+      return; // Salir si el objeto ya existe
     } else {
       // Si no existe, proceder a añadir el nuevo objeto
       const newObject = {
@@ -116,6 +137,7 @@ function App() {
           return {
             ...box,
             objects: [...box.objects, newObject], // Añadir el nuevo objeto
+            message: "", // Limpiar cualquier mensaje de error después de añadir
           };
         }
         return box; // No hacer cambios en las otras cajas
@@ -123,8 +145,6 @@ function App() {
 
       // Actualizar el estado con las cajas actualizadas
       setAddedBox(updatedBoxes);
-      setMessageAddObject(""); // Limpiar cualquier mensaje de error
-      setInputAddObject(""); // Limpiar el input después de añadir el objeto
     }
   }
 
@@ -192,8 +212,8 @@ function App() {
               box={boxSelected}
               onClickAddObject={handleAddObject}
               onChangeInputObject={handleInputAddObject}
-              messageAddObject={messageAddObject}
-              objects={addedBox.objects}
+              // messageAddObject={boxSelected.message}
+              // objects={addedBox.objects}
               inputObject={inputAddObject}
               onChangeChecked={handleChecked}
               onClickRemoveItem={handleRemoveItem}
