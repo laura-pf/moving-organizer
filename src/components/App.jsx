@@ -115,7 +115,7 @@ function App() {
         if (box.id === boxSelected.id) {
           return {
             ...box,
-            message: "El elemento que intentas añadir ya está en tu caja",
+            message: "Lo que intentas añadir ya está en tu caja",
           };
         }
         return box;
@@ -212,8 +212,6 @@ function App() {
               box={boxSelected}
               onClickAddObject={handleAddObject}
               onChangeInputObject={handleInputAddObject}
-              // messageAddObject={boxSelected.message}
-              // objects={addedBox.objects}
               inputObject={inputAddObject}
               onChangeChecked={handleChecked}
               onClickRemoveItem={handleRemoveItem}
