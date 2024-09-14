@@ -23,7 +23,7 @@ function Box(props) {
   return (
     <div className="containbox">
       <Link className="containbox__back" to="/main">
-        <span> &lt; Volver</span>
+        &lt; Volver
       </Link>
       <h1 className="containbox__tittle">{props.box.tittle}</h1>
       <form className="formAddObject">

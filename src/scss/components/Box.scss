@@ -85,3 +85,17 @@
   margin: 0;
   padding: 1px 2px;
 }
+
+.image-list {
+  margin-bottom: 0px;
+}
+
+.item-list {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+  &__image {
+    width: 25px;
+  }
+}

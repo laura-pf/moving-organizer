@@ -16,6 +16,7 @@ function App() {
   const [addedBox, setAddedBox] = useState([]);
   const [messageAddBox, setMesaggeAddBox] = useState("");
   const [inputAddObject, setInputAddObject] = useState("");
+ 
   // const [messageAddObject, setMessageAddObject] = useState("");
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
@@ -199,6 +200,7 @@ function App() {
               addedBox={addedBox}
               messageAddBox={messageAddBox}
               onClickRemoveBox={handleClickRemoveBox}
+              box={boxSelected}
             />
           }
         />
