@@ -16,12 +16,16 @@ function Main(props) {
   return (
     <main>
       <section className="section">
-        <Filter />
+        <Filter
+          InputFilterBox={props.inputFilterBox}
+          onChangeInput={props.onChangeInput}
+          addedBox={props.addedBox} //cajas filtradas que pasamos por props desde app a main
+        />
 
         <ul className="container-list-box">
           {props.addedBox.map((box, index) => (
             <BoxList
-              addedBox={props.addedBox}
+              addedBox={props.addedBox} //cajas filtradas que pasamos por props desde app a main
               key={index}
               box={box}
               onClickRemoveBox={props.onClickRemoveBox}

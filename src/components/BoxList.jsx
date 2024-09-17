@@ -3,8 +3,8 @@ import "../scss/components/BoxList.scss";
 import imageList from "../images/lista.png";
 
 function BoxList(props) {
-  function handleClickRemove(index) {
-    props.onClickRemoveBox(index);
+  function handleClickRemove() {
+    props.onClickRemoveBox(props.index);
   }
   return (
     <>

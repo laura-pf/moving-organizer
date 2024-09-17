@@ -1,22 +1,24 @@
-function Filter() {
+function Filter(props) {
+  function handleChange(event) {
+    props.onChangeInput(event.target.value);
+  }
+
   return (
     <form className="filter">
-      <label className="label">FIltrar por</label>
-      <select className="input">
-        <option className="input" value="">
-          Cajas
-        </option>
-        <option className="input" value="">
-          Muebles
-        </option>
-        <option className="input" value="">
-          Habitación
-        </option>
-        <option className="input" value="">
-          Otros
-        </option>
-      </select>
-      <input className="input" type="text" />
+      <label htmlFor="box" className="label">
+        Busca alguna de tus cajas:
+      </label>
+      <input
+        id="box"
+        value={props.inputFilterBox}
+        className="input"
+        type="text"
+        onChange={handleChange}
+      />
+
+      {/* <p className="label message">
+        No se encuentran resultados con el nombre: {props.inputFilterBox}
+      </p> */}
     </form>
   );
 }

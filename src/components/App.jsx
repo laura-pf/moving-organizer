@@ -16,7 +16,8 @@ function App() {
   const [addedBox, setAddedBox] = useState([]);
   const [messageAddBox, setMesaggeAddBox] = useState("");
   const [inputAddObject, setInputAddObject] = useState("");
- 
+  const [inputFilterBox, setInputFilterBox] = useState("");
+
   // const [messageAddObject, setMessageAddObject] = useState("");
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
@@ -182,6 +183,16 @@ function App() {
     setAddedBox(removedItem);
   }
 
+  //funcionalidad buscador por nombre de caja:
+  function handleChangeInput(value) {
+    setInputFilterBox(value);
+  }
+
+  //filtrar por nombre:
+  const filteredBoxName = addedBox.filter((box) =>
+    box.tittle.toLowerCase().includes(inputFilterBox.toLowerCase())
+  );
+
   return (
     <>
       {location.pathname !== "/" && <Header />}
@@ -197,10 +208,14 @@ function App() {
               inputModalAddBox={inputModalAddBox}
               onChangeInputModalAddBox={handleChangeInputModalAddBox}
               onClickAddBox={handleClickAddBox}
-              addedBox={addedBox}
+              // addedBox={addedBox}
+              addedBox={filteredBoxName}
               messageAddBox={messageAddBox}
               onClickRemoveBox={handleClickRemoveBox}
               box={boxSelected}
+              onChangeInput={handleChangeInput}
+              inputFilterBox={inputFilterBox}
+              // filteredBoxName={filteredBoxName}
             />
           }
         />
