@@ -23,13 +23,13 @@ function Main(props) {
         />
 
         <ul className="container-list-box">
-          {props.addedBox.map((box, index) => (
+          {props.addedBox.map((box) => (
             <BoxList
               addedBox={props.addedBox} //cajas filtradas que pasamos por props desde app a main
-              key={index}
+              key={box.id}
               box={box}
               onClickRemoveBox={props.onClickRemoveBox}
-              index={index}
+              // index={index}
             />
           ))}
 

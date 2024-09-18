@@ -65,8 +65,12 @@ function App() {
 
   //función eliminar caja
 
-  function handleClickRemoveBox(indexToRemove) {
-    const removedBox = addedBox.filter((_, index) => index !== indexToRemove);
+  // function handleClickRemoveBox(indexToRemove) {
+  //   const removedBox = addedBox.filter((_, index) => index !== indexToRemove);
+  //   setAddedBox(removedBox);
+  // }
+  function handleClickRemoveBox(idToRemove) {
+    const removedBox = addedBox.filter((box) => box.id !== idToRemove);
     setAddedBox(removedBox);
   }
 

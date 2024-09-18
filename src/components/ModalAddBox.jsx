@@ -33,8 +33,8 @@ function ModalAddBox(props) {
               Añadir
             </button>
           </div>
+          <h3 className="label message">{props.messageAddBox}</h3>
         </form>
-        <h3 className="label message">{props.messageAddBox}</h3>
       </div>
     </section>
   );

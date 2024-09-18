@@ -18,6 +18,16 @@
   background-color: white;
 
   top: 300px;
+  @media screen and (min-width: 600px) {
+    max-width: 550px;
+    min-width: 550px;
+    height: 380px;
+    top: 400px;
+    gap: 60px;
+  }
+  @media screen and (min-width: 1200px) {
+    top: 300px;
+  }
 }
 
 .input-button {
@@ -37,6 +47,11 @@
   color: $color-tittle;
   font-family: $body;
   font-weight: 600;
+  @media screen and (min-width: 600px) {
+    margin-top: 15px;
+    margin-right: 30px;
+    padding-right: 20px;
+  }
 }
 
 .button-add-box {
@@ -69,9 +84,28 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 1200px) {
+    justify-content: flex-start;
+    gap: 59px;
+  }
 }
 
 .message {
   margin-top: 20px;
   font-weight: bolder;
+  @media screen and (min-width: 600px) {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .add-box {
+    margin-bottom: 50px;
+  }
 }

@@ -4,12 +4,13 @@ import imageList from "../images/lista.png";
 
 function BoxList(props) {
   function handleClickRemove() {
-    props.onClickRemoveBox(props.index);
+    // props.onClickRemoveBox(props.index);
+    props.onClickRemoveBox(props.box.id);
   }
   return (
     <>
       <li className="container-box box">
-        <span className="remove" onClick={() => handleClickRemove(props.index)}>
+        <span className="remove" onClick={() => handleClickRemove()}>
           X
         </span>
         <Link className="container-box__link" to={`/box/${props.box.id}`}>
