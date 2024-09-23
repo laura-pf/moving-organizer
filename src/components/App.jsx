@@ -17,6 +17,7 @@ function App() {
   const [messageAddBox, setMesaggeAddBox] = useState("");
   const [inputAddObject, setInputAddObject] = useState("");
   const [inputFilterBox, setInputFilterBox] = useState("");
+  const [isLogin, setIslogin] = useState(true);
   // const [messageAddObject, setMessageAddObject] = useState("");
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
@@ -192,11 +193,18 @@ function App() {
     box.tittle.toLowerCase().includes(inputFilterBox.toLowerCase())
   );
 
+  function handleClickForm() {
+    setIslogin(!isLogin);
+  }
+
   return (
     <>
       {location.pathname !== "/" && <Header />}
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route
+          path="/"
+          element={<Landing toggleForm={handleClickForm} isLogin={isLogin} />}
+        />
         <Route
           path="/main"
           element={

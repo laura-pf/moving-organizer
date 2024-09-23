@@ -29,7 +29,6 @@ function Main(props) {
               key={box.id}
               box={box}
               onClickRemoveBox={props.onClickRemoveBox}
-              // index={index}
             />
           ))}
 

@@ -6,7 +6,7 @@
   align-items: center;
   height: 100vh;
   justify-content: space-evenly;
-  background-image: url(../../images/cajacentral-fondorosa.jpg);
+  background-image: $pastel-pink;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -35,4 +35,95 @@
       text-shadow: 2px 2px 0 #000, -2px 2px 0;
     }
   }
+}
+
+//LANDING
+
+.container-login {
+  font-family: $body;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fff;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease;
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: $color-tittle;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: $color-tittle;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid $pastel-pink;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: $color-tittle;
+  outline: none;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: $color-tittle;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.switch-text {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.switch-text a {
+  color: $color-tittle;
+  text-decoration: none;
+}
+
+.switch-text a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    margin: 0 10px;
+  }
+}
+
+.label {
+  color: $color-tittle;
 }
