@@ -17,12 +17,8 @@
   position: absolute;
   background-color: white;
 
-  top: 300px;
-  @media screen and (min-width: 600px) {
-    padding-left: 30px;
-    padding-right: 30px;
-    top: 300px;
-  }
+  top: 250px;
+
 }
 
 .input-button {
@@ -91,7 +87,8 @@
   }
   @media screen and (min-width: 1200px) {
     justify-content: flex-start;
-    gap: 59px;
+    gap: 50px;
+    
   }
 }
 
