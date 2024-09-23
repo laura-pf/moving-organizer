@@ -17,7 +17,6 @@ function App() {
   const [messageAddBox, setMesaggeAddBox] = useState("");
   const [inputAddObject, setInputAddObject] = useState("");
   const [inputFilterBox, setInputFilterBox] = useState("");
-
   // const [messageAddObject, setMessageAddObject] = useState("");
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
@@ -65,10 +64,6 @@ function App() {
 
   //función eliminar caja
 
-  // function handleClickRemoveBox(indexToRemove) {
-  //   const removedBox = addedBox.filter((_, index) => index !== indexToRemove);
-  //   setAddedBox(removedBox);
-  // }
   function handleClickRemoveBox(idToRemove) {
     const removedBox = addedBox.filter((box) => box.id !== idToRemove);
     setAddedBox(removedBox);
@@ -212,14 +207,12 @@ function App() {
               inputModalAddBox={inputModalAddBox}
               onChangeInputModalAddBox={handleChangeInputModalAddBox}
               onClickAddBox={handleClickAddBox}
-              // addedBox={addedBox}
               addedBox={filteredBoxName}
               messageAddBox={messageAddBox}
               onClickRemoveBox={handleClickRemoveBox}
               box={boxSelected}
               onChangeInput={handleChangeInput}
               inputFilterBox={inputFilterBox}
-              // filteredBoxName={filteredBoxName}
             />
           }
         />
