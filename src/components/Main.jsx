@@ -5,6 +5,7 @@ import ModalAddBox from "./ModalAddBox";
 
 import { Link } from "react-router-dom";
 import BoxList from "./BoxList";
+import MobileMenuHeader from "./MobileMenuHeader";
 
 function Main(props) {
   /*Cuando la usuaria haga click en añadir caja, muestra el pop up con el formulario para añadir*/
@@ -54,6 +55,7 @@ function Main(props) {
           messageAddBox={props.messageAddBox}
         />
       )}
+      {props.mobileMenuHeader && <MobileMenuHeader />}
     </main>
   );
 }

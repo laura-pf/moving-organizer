@@ -1,0 +1,17 @@
+@import "../core/variables.scss";
+
+.mobile-menu {
+  width: 150px;
+
+  position: absolute;
+
+  top: 60px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease;
+}

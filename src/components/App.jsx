@@ -19,6 +19,7 @@ function App() {
   const [inputFilterBox, setInputFilterBox] = useState("");
   const [isLogin, setIslogin] = useState(true);
   const [inputFilterObject, setInputFilterObject] = useState("");
+  const [mobileMenuHeader, setMobileMenuHeader] = useState(false);
   // const [messageAddObject, setMessageAddObject] = useState("");
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
@@ -205,11 +206,13 @@ function App() {
     setIslogin(!isLogin);
   }
 
-  //Filtrar por cosas que haya dentro de la caja
+  function handleMouseMenu() {
+    setMobileMenuHeader(!mobileMenuHeader);
+  }
 
   return (
     <>
-      {location.pathname !== "/" && <Header />}
+      {location.pathname !== "/" && <Header toggleMenu={handleMouseMenu} />}
       <Routes>
         <Route
           path="/"
@@ -233,6 +236,7 @@ function App() {
               onChangeInputObject={handleChangeInputObject}
               inputFilterBox={inputFilterBox}
               inputFilterObject={inputFilterObject}
+              mobileMenuHeader={mobileMenuHeader}
             />
           }
         />

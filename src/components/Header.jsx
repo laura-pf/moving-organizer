@@ -2,7 +2,12 @@ import "../scss/components/Header.scss";
 import LogoBox from "../images/caja-png.png";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header(props) {
+  function handleClickMenu(event) {
+    event.preventDefault();
+    props.toggleMenu();
+  }
+
   return (
     <header className="header">
       <nav className="header__nav">
@@ -25,7 +30,7 @@ function Header() {
           <li className="nav-list-item">| Cerrar sesión |</li>
         </ul>
 
-        <button className="menu-button"></button>
+        <button className="menu-button" onClick={handleClickMenu}></button>
       </nav>
     </header>
   );
