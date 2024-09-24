@@ -1,20 +1,18 @@
 @import "../core/variables.scss";
 
+body {
+  height: 100vh;
+}
+
 .landing {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   justify-content: space-evenly;
-  background-image: $pastel-pink;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
-  background-color: #f9e5f7;
-  @media (min-width: 1024px) {
-    background-size: 50%;
-  }
+
+  background-color: $pastel-pink;
 
   &__tittle {
     font-family: $tittle;
@@ -25,19 +23,26 @@
   }
   &__button {
     background-color: $color-tittle;
-    padding: 12px;
-    border-radius: 20%;
-    border: 1px, solid, black;
+    padding: 7px 12px;
+    border-radius: 100%;
     &-link {
       font-family: $tittle;
       color: white;
-      font-size: 40px;
-      text-shadow: 2px 2px 0 #000, -2px 2px 0;
+      font-size: 20px;
     }
   }
 }
 
-//LANDING
+//LOGGIN
+
+@media screen and (min-width: 1024px) {
+  .section-landing {
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+    min-height: 370px;
+  }
+}
 
 .container-login {
   font-family: $body;
@@ -126,4 +131,57 @@
 
 .label {
   color: $color-tittle;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: row;
+  min-height: 250px;
+
+  align-items: center;
+  background-image: url("../../images/chica-caja.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 95%;
+}
+.register {
+  display: flex;
+  flex-direction: row;
+  min-height: 250px;
+
+  align-items: center;
+  background-image: url("../../images/chica-caja.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 95%;
+}
+
+.section-landing {
+  margin: 30px 0;
+  max-height: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .welcome {
+    justify-content: space-between;
+    align-items: center;
+    background-image: url("../../images/chica-caja.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 95%;
+  }
+  // .login-description {
+  //   text-align: center;
+  //   background-color: rgba(243, 153, 183, 0.507);
+  //   color: black;
+  // }
+  .register {
+    background-image: url("../../images/chica-caja.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 95%;
+  }
+  .container-login {
+    margin-top: 30px;
+  }
 }
