@@ -17,12 +17,15 @@ function Header() {
 
         <ul className="header__nav-list">
           <Link to="/info">
-            <li className="nav-list-item">INFO</li>
+            <li className="nav-list-item">| Sobre la APP |</li>
           </Link>
           <Link to="/contact">
-            <li className="nav-list-item">CONTACTO</li>
+            <li className="nav-list-item">| Contacto |</li>
           </Link>
+          <li className="nav-list-item">| Cerrar sesión |</li>
         </ul>
+
+        <button className="menu-button"></button>
       </nav>
     </header>
   );

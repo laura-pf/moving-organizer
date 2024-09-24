@@ -18,6 +18,7 @@ function App() {
   const [inputAddObject, setInputAddObject] = useState("");
   const [inputFilterBox, setInputFilterBox] = useState("");
   const [isLogin, setIslogin] = useState(true);
+  const [inputFilterObject, setInputFilterObject] = useState("");
   // const [messageAddObject, setMessageAddObject] = useState("");
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
@@ -188,14 +189,23 @@ function App() {
     setInputFilterBox(value);
   }
 
+  //buscar por objeto: //ya funciona el input, ahora hay que filtrar
+
+  function handleChangeInputObject(value) {
+    setInputFilterObject(value);
+  }
+
   //filtrar por nombre:
   const filteredBoxName = addedBox.filter((box) =>
     box.tittle.toLowerCase().includes(inputFilterBox.toLowerCase())
   );
 
+  //login-register:
   function handleClickForm() {
     setIslogin(!isLogin);
   }
+
+  //Filtrar por cosas que haya dentro de la caja
 
   return (
     <>
@@ -220,7 +230,9 @@ function App() {
               onClickRemoveBox={handleClickRemoveBox}
               box={boxSelected}
               onChangeInput={handleChangeInput}
+              onChangeInputObject={handleChangeInputObject}
               inputFilterBox={inputFilterBox}
+              inputFilterObject={inputFilterObject}
             />
           }
         />

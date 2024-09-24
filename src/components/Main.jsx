@@ -17,9 +17,11 @@ function Main(props) {
     <main>
       <section className="section">
         <Filter
-          InputFilterBox={props.inputFilterBox}
+          inputFilterBox={props.inputFilterBox}
           onChangeInput={props.onChangeInput}
           addedBox={props.addedBox} //cajas filtradas que pasamos por props desde app a main
+          inputFilterObject={props.inputFilterObject}
+          onChangeInputObject={props.onChangeInputObject}
         />
 
         <ul className="container-list-box">

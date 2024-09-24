@@ -16,10 +16,15 @@
 }
 .input {
   padding: 5px;
-  border-radius: 5%;
+  border-radius: 5px;
   border: 2px solid $pastel-pink;
   color: $color-tittle;
   font-family: $body;
   font-size: 16px;
   font-weight: 600;
+}
+
+.input:focus {
+  border-color: $color-tittle;
+  outline: none;
 }

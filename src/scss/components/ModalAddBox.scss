@@ -13,12 +13,13 @@
   max-width: 350px;
   min-width: 350px;
   min-height: 220px;
-  border: 2px solid $color-tittle;
+  border: 2px solid $pastel-pink;
   position: absolute;
   background-color: white;
 
   top: 250px;
-
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease;
 }
 
 .input-button {
@@ -88,7 +89,6 @@
   @media screen and (min-width: 1200px) {
     justify-content: flex-start;
     gap: 50px;
-    
   }
 }
 
