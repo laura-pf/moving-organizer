@@ -200,6 +200,8 @@ function App() {
   //   box.tittle.toLowerCase().includes(inputFilterBox.toLowerCase())
   // );
 
+  //filtrar por nombre de la caja y por objeto dentro de la caja
+
   const filteredBoxName = addedBox
     .filter((box) =>
       box.tittle.toLowerCase().includes(inputFilterBox.toLowerCase())
