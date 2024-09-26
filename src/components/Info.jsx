@@ -6,10 +6,11 @@ function Info() {
     <>
       <div className="container-link">
         <Link className="container-link__link" to="/main">
-          VOLVER
+          &lt; Volver
         </Link>
       </div>
       <div className="container">
+        <div className="background"></div>
         <section className="info">
           <h2 className="info__tittle">ORGANIZADOR DE MUDANZAS</h2>
           <p className="info__text">

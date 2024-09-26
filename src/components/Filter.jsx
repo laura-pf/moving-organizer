@@ -18,11 +18,11 @@ function Filter(props) {
         type="text"
         onChange={handleChange}
       />
-      <label htmlFor="box" className="label">
+      <label htmlFor="object" className="label">
         Busca cosas dentro de tus cajas:
       </label>
       <input
-        id="box"
+        id="object"
         value={props.inputFilterObject}
         className="input"
         type="text"

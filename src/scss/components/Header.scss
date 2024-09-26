@@ -24,9 +24,12 @@
 
 .nav-list-item {
   font-family: $body;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
   color: $color-tittle;
+  @media screen and (min-width: 1024px) {
+    font-size: 15px;
+  }
 }
 
 .menu-button {
