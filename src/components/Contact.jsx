@@ -1,16 +1,19 @@
 import IconEmail from "../images/email.png";
 import IconTel from "../images/tel.png";
-import IconInsta from "../images/insta.png";
 import "../scss/components/Contact.scss";
 import { Link } from "react-router-dom";
 import ContactUs from "../images/contacto.jpg";
 import iconLinkedIn from "../images/linkedin.png";
+import MobileMenuHeader from "./MobileMenuHeader";
 
-function Contact() {
+function Contact(props) {
+  function handleClick() {
+    props.onClickCloseMenu();
+  }
   return (
     <>
       <div className="container-link">
-        <Link className="container-link__link" to="/main">
+        <Link onClick={handleClick} className="container-link__link" to="/main">
           &lt; Volver
         </Link>
       </div>
@@ -38,6 +41,9 @@ function Contact() {
           </li>
         </a>
       </ul>
+      {props.mobileMenuHeader && (
+        <MobileMenuHeader onClickCloseMenu={props.onClickCloseMenu} />
+      )}
     </>
   );
 }

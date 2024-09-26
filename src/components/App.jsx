@@ -217,13 +217,17 @@ function App() {
     setIslogin(!isLogin);
   }
 
-  function handleMouseMenu() {
+  function handleClickMenu() {
     setMobileMenuHeader(!mobileMenuHeader);
+  }
+
+  function handleCloseMenu() {
+    setMobileMenuHeader(false);
   }
 
   return (
     <>
-      {location.pathname !== "/" && <Header toggleMenu={handleMouseMenu} />}
+      {location.pathname !== "/" && <Header toggleMenu={handleClickMenu} />}
       <Routes>
         <Route
           path="/"
@@ -248,11 +252,28 @@ function App() {
               inputFilterBox={inputFilterBox}
               inputFilterObject={inputFilterObject}
               mobileMenuHeader={mobileMenuHeader}
+              onClickCloseMenu={handleCloseMenu}
             />
           }
         />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/info" element={<Info />} />
+        <Route
+          path="/contact"
+          element={
+            <Contact
+              onClickCloseMenu={handleCloseMenu}
+              mobileMenuHeader={mobileMenuHeader}
+            />
+          }
+        />
+        <Route
+          path="/info"
+          element={
+            <Info
+              onClickCloseMenu={handleCloseMenu}
+              mobileMenuHeader={mobileMenuHeader}
+            />
+          }
+        />
         <Route
           path="/box/:boxId"
           element={

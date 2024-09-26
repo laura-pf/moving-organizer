@@ -55,7 +55,9 @@ function Main(props) {
           messageAddBox={props.messageAddBox}
         />
       )}
-      {props.mobileMenuHeader && <MobileMenuHeader />}
+      {props.mobileMenuHeader && (
+        <MobileMenuHeader onClickCloseMenu={props.onClickCloseMenu} />
+      )}
     </main>
   );
 }

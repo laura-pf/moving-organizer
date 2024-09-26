@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
 import "../scss/components/Info.scss";
+import MobileMenuHeader from "./MobileMenuHeader";
 
-function Info() {
+function Info(props) {
+  function handleClick() {
+    props.onClickCloseMenu();
+  }
+
   return (
     <>
       <div className="container-link">
-        <Link className="container-link__link" to="/main">
+        <Link onClick={handleClick} className="container-link__link" to="/main">
           &lt; Volver
         </Link>
       </div>
@@ -41,6 +46,9 @@ function Info() {
           </p>
         </section>
       </div>
+      {props.mobileMenuHeader && (
+        <MobileMenuHeader onClickCloseMenu={props.onClickCloseMenu} />
+      )}
     </>
   );
 }
