@@ -46,7 +46,10 @@
     font-size: medium;
   }
 }
-
+.input-add-box:focus {
+  border-color: $color-tittle;
+  outline: none;
+}
 .button-add-box {
   background-color: $color-tittle;
   padding: 3px 6px;

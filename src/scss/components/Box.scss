@@ -42,6 +42,7 @@
 
       padding: 3px;
       border: 2px $color-tittle solid;
+      color: $color-tittle;
     }
     &-button {
       background-color: $color-tittle;
@@ -53,6 +54,11 @@
       cursor: pointer;
     }
   }
+}
+
+.formAddObject__inputButton-inputObject:focus {
+  border-color: $color-tittle;
+  outline: none;
 }
 
 .object-list {

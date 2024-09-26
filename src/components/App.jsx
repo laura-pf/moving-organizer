@@ -189,17 +189,26 @@ function App() {
   function handleChangeInput(value) {
     setInputFilterBox(value);
   }
-
-  //buscar por objeto: //ya funciona el input, ahora hay que filtrar
+  //buscar por objeto:
 
   function handleChangeInputObject(value) {
     setInputFilterObject(value);
   }
 
-  //filtrar por nombre:
-  const filteredBoxName = addedBox.filter((box) =>
-    box.tittle.toLowerCase().includes(inputFilterBox.toLowerCase())
-  );
+  //filtrar por nombre de caja:
+  // const filteredBoxName = addedBox.filter((box) =>
+  //   box.tittle.toLowerCase().includes(inputFilterBox.toLowerCase())
+  // );
+
+  const filteredBoxName = addedBox
+    .filter((box) =>
+      box.tittle.toLowerCase().includes(inputFilterBox.toLowerCase())
+    )
+    .filter((box) =>
+      box.objects.some((obj) =>
+        obj.text.toLowerCase().includes(inputFilterObject.toLowerCase())
+      )
+    );
 
   //login-register:
   function handleClickForm() {
@@ -253,6 +262,7 @@ function App() {
               inputObject={inputAddObject}
               onChangeChecked={handleChecked}
               onClickRemoveItem={handleRemoveItem}
+              // objectFilter={filteredObject}
             />
           }
         />
