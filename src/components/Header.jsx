@@ -1,5 +1,5 @@
 import "../scss/components/Header.scss";
-import LogoBox from "../images/caja-png.png";
+import LogoBox from "../images/logo-boxify.png";
 import { Link } from "react-router-dom";
 
 function Header(props) {
