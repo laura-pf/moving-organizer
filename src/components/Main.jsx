@@ -2,6 +2,7 @@ import "../scss/components/Main.scss";
 import IconAdd from "../images/icon+.png";
 import Filter from "./Filter";
 import ModalAddBox from "./ModalAddBox";
+import ChicaCaja from "../images/chica-caja.jpg";
 
 import { Link } from "react-router-dom";
 import BoxList from "./BoxList";

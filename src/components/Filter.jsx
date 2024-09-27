@@ -8,26 +8,28 @@ function Filter(props) {
 
   return (
     <form className="filter">
-      <label htmlFor="box" className="label">
-        Busca alguna de tus cajas:
-      </label>
-      <input
-        id="box"
-        value={props.inputFilterBox}
-        className="input"
-        type="text"
-        onChange={handleChange}
-      />
-      <label htmlFor="object" className="label">
-        Busca cosas dentro de tus cajas:
-      </label>
-      <input
-        id="object"
-        value={props.inputFilterObject}
-        className="input"
-        type="text"
-        onChange={handleChangeObject}
-      />
+      <div className="filter__container">
+        <label htmlFor="box" className="label filters">
+          Busca alguna de tus cajas:
+        </label>
+        <input
+          id="box"
+          value={props.inputFilterBox}
+          className="input"
+          type="text"
+          onChange={handleChange}
+        />
+        <label htmlFor="object" className="label filters ">
+          Busca cosas dentro de tus cajas:
+        </label>
+        <input
+          id="object"
+          value={props.inputFilterObject}
+          className="input"
+          type="text"
+          onChange={handleChangeObject}
+        />
+      </div>
 
       {/* <p className="label message">
         No se encuentran resultados con el nombre: {props.inputFilterBox}

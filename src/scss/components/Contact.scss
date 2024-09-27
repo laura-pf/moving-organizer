@@ -10,6 +10,7 @@
   justify-content: space-evenly;
   align-items: center;
   margin-top: 50px;
+  animation: fadeIn 0.5s ease;
 }
 
 .container-link {
@@ -30,13 +31,15 @@
 .container-img {
   display: flex;
   align-items: center;
-  margin-top: 80px;
+
   margin-bottom: 60px;
+  animation: fadeIn 0.5s ease;
 }
 .img-contact {
   width: 100%;
   height: auto;
   object-fit: contain;
+
   @media screen and (min-width: 1024px) {
     width: 700px;
     margin: 0 auto;

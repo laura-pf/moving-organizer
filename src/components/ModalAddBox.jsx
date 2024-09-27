@@ -22,9 +22,12 @@ function ModalAddBox(props) {
           X
         </span>
         <form className="add-box" action="">
-          <label className="name-box">Nombre de la caja:</label>
+          <label htmlFor="modal" className="name-box">
+            Nombre de la caja:
+          </label>
           <div className="input-button">
             <input
+              id="modal"
               className="input-add-box"
               type="text"
               onChange={handleInput}
