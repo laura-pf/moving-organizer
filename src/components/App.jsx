@@ -202,25 +202,28 @@ function App() {
 
   //filtrar por nombre de la caja y por objeto dentro de la caja
 
- 
-
   const filteredBoxName = addedBox
     .filter((box) =>
       box.tittle.toLowerCase().includes(inputFilterBox.toLowerCase())
     )
     .filter((box) => {
-      // Si la caja no tiene objetos, la mostramos
-      if (box.objects.length === 0) {
+      // Si no se está filtrando por objeto, mostramos todas las cajas
+      if (inputFilterObject === "") {
         return true;
-      } else {
-        //si no, filtramos
-        return box.objects.some((obj) =>
-          obj.text.toLowerCase().includes(inputFilterObject.toLowerCase())
-        );
       }
-    });
 
-  
+      // Si la caja no tiene objetos, la eliminamos del resultado
+      if (box.objects.length === 0) {
+        return false;
+      }
+
+      // Si la caja tiene objetos, aplicamos el filtro a los objetos
+      const objectMatches = box.objects.some((obj) =>
+        obj.text.toLowerCase().includes(inputFilterObject.toLowerCase())
+      );
+
+      return objectMatches;
+    });
 
   //login-register:
   function handleClickForm() {

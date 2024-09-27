@@ -5,6 +5,7 @@
   background-color: $pastel-pink;
   position: absolute;
   position: fixed;
+  z-index: 3;
   width: 100%;
   top: 0;
   &__nav {
