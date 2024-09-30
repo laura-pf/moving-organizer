@@ -268,7 +268,12 @@ function App() {
 
   return (
     <>
-      {location.pathname !== "/" && <Header toggleMenu={handleClickMenu} />}
+      {location.pathname !== "/" && (
+        <Header
+          toggleMenu={handleClickMenu}
+          onClickCloseMenu={handleCloseMenu}
+        />
+      )}
       <Routes>
         <Route
           path="/"

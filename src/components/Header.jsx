@@ -8,10 +8,14 @@ function Header(props) {
     props.toggleMenu();
   }
 
+  function handleClick() {
+    props.onClickCloseMenu();
+  }
+
   return (
     <header className="header">
       <nav className="header__nav">
-        <Link className="header__nav-link" to="/">
+        <Link onClick={handleClick} className="header__nav-link" to="/">
           {" "}
           <img
             className="img-link"
