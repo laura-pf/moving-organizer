@@ -2,9 +2,9 @@
 
 ¡Organiza tu mudanza de manera sencilla! Con esta aplicación web, podrás gestionar tus cajas y objetos durante el proceso de mudanza, eliminando el estrés del desorden.
 
-<img src="./src/images/1.png" alt="Vista previa de Boxyfy" width="200"/>
-<img src="./src/images/2.png" alt="Vista previa de Boxyfy" width="200"/>
-<img src="./src/images/3.png" alt="Vista previa de Boxyfy" width="200"/>
+<img src="./src/images/1.png" alt="Vista previa de Boxyfy" width="400"/>
+<img src="./src/images/2.png" alt="Vista previa de Boxyfy" width="400"/>
+<img src="./src/images/3.png" alt="Vista previa de Boxyfy" width="400"/>
 
 ## Índice
 
