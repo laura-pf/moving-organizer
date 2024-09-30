@@ -6,7 +6,7 @@ function Landing(props) {
   return (
     <main className="landing">
       <Login toggleForm={props.toggleForm} isLogin={props.isLogin} />
-      <p className="label">
+      <p className="label construction">
         Back-End en construcción 🏗️, para continuar viendo la APP:
       </p>
       <div className="landing__button">
