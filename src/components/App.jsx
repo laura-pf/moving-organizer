@@ -20,6 +20,8 @@ function App() {
   const [isLogin, setIslogin] = useState(true);
   const [inputFilterObject, setInputFilterObject] = useState("");
   const [mobileMenuHeader, setMobileMenuHeader] = useState(false);
+  const [modalRemoveBox, setModalRemoveBox] = useState(false);
+  const [boxToRemove, setBoxToRemove] = useState(null);
   // const [messageAddObject, setMessageAddObject] = useState("");
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
@@ -65,13 +67,26 @@ function App() {
     }
   }
 
-  //función eliminar caja
-
-  function handleClickRemoveBox(idToRemove) {
-    const removedBox = addedBox.filter((box) => box.id !== idToRemove);
-    setAddedBox(removedBox);
+  //funcion aparece mensaje eliminar
+  function handleQuestionRemoveBox(box) {
+    setBoxToRemove(box);
+    setModalRemoveBox(true);
   }
 
+  //función eliminar caja (SI)
+
+  function handleClickRemoveBox() {
+    const removedBox = addedBox.filter((box) => box.id !== boxToRemove.id);
+    setAddedBox(removedBox);
+    setModalRemoveBox(false);
+    setBoxToRemove(null);
+  }
+
+  //funcion cerrar modal mensaje eliminar caja (NO)
+  function handleCloseModal() {
+    setModalRemoveBox(false);
+    setBoxToRemove(null);
+  }
   //rutas de cada caja
 
   const { pathname } = useLocation();
@@ -258,7 +273,9 @@ function App() {
               onClickAddBox={handleClickAddBox}
               addedBox={filteredBoxName}
               messageAddBox={messageAddBox}
+              questionRemove={handleQuestionRemoveBox}
               onClickRemoveBox={handleClickRemoveBox}
+              onCloseModal={handleCloseModal}
               box={boxSelected}
               onChangeInput={handleChangeInput}
               onChangeInputObject={handleChangeInputObject}
@@ -266,6 +283,8 @@ function App() {
               inputFilterObject={inputFilterObject}
               mobileMenuHeader={mobileMenuHeader}
               onClickCloseMenu={handleCloseMenu}
+              modalRemoveBox={modalRemoveBox}
+              boxToRemove={boxToRemove}
             />
           }
         />

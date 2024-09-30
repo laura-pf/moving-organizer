@@ -7,6 +7,7 @@ import ChicaCaja from "../images/chica-caja.jpg";
 import { Link } from "react-router-dom";
 import BoxList from "./BoxList";
 import MobileMenuHeader from "./MobileMenuHeader";
+import ModalRemoveBox from "./ModalRemoveBox";
 
 function Main(props) {
   /*Cuando la usuaria haga click en añadir caja, muestra el pop up con el formulario para añadir*/
@@ -33,6 +34,10 @@ function Main(props) {
               key={box.id}
               box={box}
               onClickRemoveBox={props.onClickRemoveBox}
+              modalRemoveBox={props.modalRemoveBox}
+              questionRemove={props.questionRemove}
+              onCloseModal={props.onCloseModal}
+              boxToRemove={props.boxToRemove}
             />
           ))}
 
@@ -56,6 +61,15 @@ function Main(props) {
           messageAddBox={props.messageAddBox}
         />
       )}
+
+      {props.modalRemoveBox && (
+        <ModalRemoveBox
+          onClickRemoveBox={props.onClickRemoveBox}
+          onCloseModal={props.onCloseModal}
+          box={props.boxToRemove}
+        />
+      )}
+
       {props.mobileMenuHeader && (
         <MobileMenuHeader onClickCloseMenu={props.onClickCloseMenu} />
       )}

@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import "../scss/components/BoxList.scss";
 import imageList from "../images/lista.png";
+import ModalRemoveBox from "./ModalRemoveBox";
 
 function BoxList(props) {
   function handleClickRemove() {
-    // props.onClickRemoveBox(props.index);
-    props.onClickRemoveBox(props.box.id);
+    // props.onClickRemoveBox(props.box.id);
+    props.questionRemove(props.box);
   }
   return (
     <>
@@ -30,6 +31,14 @@ function BoxList(props) {
           </span>
         </Link>
       </li>
+
+      {/* {props.modalRemoveBox && props.box.id === props.boxToRemove && (
+        <ModalRemoveBox
+          box={props.box}
+          onClickRemoveBox={props.onClickRemoveBox}
+          onCloseModal={props.onCloseModal}
+        />
+      )} */}
     </>
   );
 }
