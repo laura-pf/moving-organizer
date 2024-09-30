@@ -5,15 +5,16 @@ import Main from "./Main";
 import Contact from "./Contact";
 import Info from "./Info";
 import Header from "./Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LogoBox from "../images/caja-png.png";
 import Box from "./Box";
+import localStorage from "../services/localStorage";
 
 function App() {
   const [modalAddBox, setModalAddBox] = useState(false);
   const location = useLocation();
   const [inputModalAddBox, setInputModalAddBox] = useState("");
-  const [addedBox, setAddedBox] = useState([]);
+  const [addedBox, setAddedBox] = useState(localStorage.get("boxes"), []);
   const [messageAddBox, setMesaggeAddBox] = useState("");
   const [inputAddObject, setInputAddObject] = useState("");
   const [inputFilterBox, setInputFilterBox] = useState("");
@@ -23,6 +24,13 @@ function App() {
   const [modalRemoveBox, setModalRemoveBox] = useState(false);
   const [boxToRemove, setBoxToRemove] = useState(null);
   // const [messageAddObject, setMessageAddObject] = useState("");
+
+  //guardar en localStorage:
+
+  useEffect(() => {
+    localStorage.set("boxes", addedBox);
+  }, [addedBox]);
+
   /*abrir pop up añadir caja*/
   function handleModalAddBox() {
     setModalAddBox(true);
@@ -80,6 +88,7 @@ function App() {
     setAddedBox(removedBox);
     setModalRemoveBox(false);
     setBoxToRemove(null);
+    localStorage.clear();
   }
 
   //funcion cerrar modal mensaje eliminar caja (NO)
@@ -198,6 +207,7 @@ function App() {
       return box;
     });
     setAddedBox(removedItem);
+    localStorage.clear();
   }
 
   //funcionalidad buscador por nombre de caja:
@@ -318,6 +328,7 @@ function App() {
               onChangeChecked={handleChecked}
               onClickRemoveItem={handleRemoveItem}
               // objectFilter={filteredObject}
+              mobileMenuHeader={mobileMenuHeader}
             />
           }
         />

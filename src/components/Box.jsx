@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../scss/components/Box.scss";
+import MobileMenuHeader from "./MobileMenuHeader";
 
 function Box(props) {
   function handleAddObject(event) {
@@ -18,6 +19,9 @@ function Box(props) {
 
   function handleClickRemoveItem(index) {
     props.onClickRemoveItem(index, props.box.id);
+  }
+  function handleClick() {
+    props.onClickCloseMenu();
   }
 
   return (
@@ -82,7 +86,9 @@ function Box(props) {
         ))}
       </ul>
 
-      <button className="button-save-box">Guardar Caja</button>
+      {props.mobileMenuHeader && (
+        <MobileMenuHeader onClickCloseMenu={handleClick} />
+      )}
     </div>
   );
 }
