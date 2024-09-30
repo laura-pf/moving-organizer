@@ -14,7 +14,10 @@ function App() {
   const [modalAddBox, setModalAddBox] = useState(false);
   const location = useLocation();
   const [inputModalAddBox, setInputModalAddBox] = useState("");
-  const [addedBox, setAddedBox] = useState(localStorage.get("boxes"), []);
+  const [addedBox, setAddedBox] = useState(() => {
+    return localStorage.get("boxes", []);
+  });
+
   const [messageAddBox, setMesaggeAddBox] = useState("");
   const [inputAddObject, setInputAddObject] = useState("");
   const [inputFilterBox, setInputFilterBox] = useState("");
