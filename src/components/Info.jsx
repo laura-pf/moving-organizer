@@ -17,7 +17,7 @@ function Info(props) {
       <div className="container">
         <div className="background"></div>
         <section className="info">
-          <h2 className="info__tittle">ORGANIZADOR DE MUDANZAS</h2>
+          <h2 className="info__tittle">SOBRE BOXIFY</h2>
           <p className="info__text">
             Sabemos lo estresante que puede ser una mudanza, y por eso hemos
             creado esta App Web para hacer todo el proceso mucho más fácil.{" "}
