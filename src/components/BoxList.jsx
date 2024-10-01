@@ -8,13 +8,21 @@ function BoxList(props) {
     // props.onClickRemoveBox(props.box.id);
     props.questionRemove(props.box);
   }
+
+   function handleClick() {
+     props.onClickCloseMenu();
+   }
   return (
     <>
       <li className="container-box box">
         <span className="remove" onClick={() => handleClickRemove()}>
           X
         </span>
-        <Link className="container-box__link" to={`/box/${props.box.id}`}>
+        <Link
+          onClick={handleClick}
+          className="container-box__link"
+          to={`/box/${props.box.id}`}
+        >
           <h3 className="container-box__tittle">{props.box.tittle}</h3>
           <img
             className="box-image image-list"

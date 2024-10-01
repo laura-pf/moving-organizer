@@ -38,6 +38,7 @@ function Main(props) {
               questionRemove={props.questionRemove}
               onCloseModal={props.onCloseModal}
               boxToRemove={props.boxToRemove}
+              onClickCloseMenu={props.onClickCloseMenu}
             />
           ))}
 
