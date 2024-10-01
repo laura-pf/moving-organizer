@@ -13,12 +13,15 @@
     color: $color-tittle;
     margin-bottom: 30px;
     text-align: center;
+    overflow: scroll;
   }
   &__back {
     font-family: $body;
     color: $color-tittle;
     font-weight: 700;
-    align-self: end;
+    align-self: center;
+    margin-bottom: 20px;
+    text-decoration: underline;
   }
 }
 

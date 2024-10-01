@@ -57,9 +57,11 @@ function App() {
       (box) => box.tittle.toLowerCase() === inputModalAddBox.toLocaleLowerCase()
     );
 
-    if (inputModalAddBox === "") {
+    if (inputModalAddBox.trim() === "") {
       setMesaggeAddBox("Debes ponerle un nombre a la caja");
       return;
+    } else if (inputModalAddBox.length > 18) {
+      setMesaggeAddBox("Ese nombre es demasiado largo");
     } else if (doesBoxExist) {
       setMesaggeAddBox("Ya hay otra caja con ese nombre");
       return;
@@ -106,6 +108,14 @@ function App() {
   const boxId = routeData !== null ? parseInt(routeData.params.boxId) : null;
 
   const boxSelected = addedBox.find((box) => box.id === boxId);
+
+  //forzar scroll
+
+  useEffect(() => {
+    if (pathname !== "/main") {
+      window.scrollTo(0, 0); // Forzar el scroll al tope cada vez que cambias de ruta
+    }
+  }, [pathname]); // Ejecuta el efecto cada vez que cambie la ruta
 
   //Añadir objetos (dentro de las rutas, es decir, dentro de cada caja)
 
